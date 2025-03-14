@@ -1,0 +1,5 @@
+No Of Rows in organizations Table : 10 Rows
+No Of Rows in channels Table : 1000 Rows
+No Of Rows in users Table : 1000 Rows
+No Of Rows in channel_subscribed_by_users Table : 100000 Rows
+No Of Rows in message Table : 1000000 Rows
