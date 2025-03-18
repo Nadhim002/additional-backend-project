@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS users (
     user_name TEXT NOT NULL 
 );
                         
-CREATE TABLE IF NOT EXISTS message (
+CREATE TABLE IF NOT EXISTS messages (
     message_id INTEGER PRIMARY KEY,
     post_time DATETIME DEFAULT CURRENT_TIMESTAMP,
     content TEXT NOT NULL,

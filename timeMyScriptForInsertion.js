@@ -1,9 +1,20 @@
 import DB from "./db.js"
-import { addMessagesinAllChannels } from "./index.js"
+import  {addMessagesinAllChannels} from "./dataInsertionHelper.js"
 
-function timeMyScriptForInsertion(){
+const noOfMessagesPerChannel = 1000
 
-    addMessagesinAllChannels(10000)
+
+function timeMyScriptForInsertion(  ){
+
+    const startTime =   Date.now()
+
+    addMessagesinAllChannels()
+
+    const endTime = Date.now()
+
+    console.log(`Took ${ (endTime - startTime)/1000 } seconds` )
+
+
 
 }
 

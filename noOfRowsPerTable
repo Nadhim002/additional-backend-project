@@ -1,5 +1,8 @@
+Table for no of messages per channel 1000 
+Table for no of messages per channel 1000 
 No Of Rows in organizations Table : 10 Rows
-No Of Rows in channels Table : 1000 Rows
-No Of Rows in users Table : 1000 Rows
-No Of Rows in channel_subscribed_by_users Table : 100000 Rows
-No Of Rows in message Table : 1000000 Rows
+No Of Rows in channels Table : 0 Rows
+No Of Rows in users Table : 0 Rows
+No Of Rows in channel_subscribed_by_users Table : 0 Rows
+No Of Rows in messages Table : 0 Rows
+ 

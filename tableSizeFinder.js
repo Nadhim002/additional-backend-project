@@ -1,29 +1,34 @@
-
-import DB  from "./db.js"
 import fs from "fs/promises"
+import dBCallWithPromise from "./promiseBasedDbCalls.js"
 
-const tableNames = [ "organizations" , "channels" , "users" , "channel_subscribed_by_users" , "message"  ]
+const tableNames = [
+  "organizations",
+  "channels",
+  "users",
+  "channel_subscribed_by_users",
+  "messages",
+]
 
-function tableSizeFinder(tableName) {
-    return new Promise((resolve, reject) => {
-        const sqlQuery = `SELECT COUNT(*) AS noOfRows FROM ${tableName}`
-        DB.get(sqlQuery, function (err, rows) {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(`No Of Rows in ${tableName} Table : ${rows.noOfRows} Rows`)
-            }
-        });
-    });
+async function tableSizeFinder(tableName) {
+  const sqlQuery = `SELECT COUNT(*) AS noOfRows FROM ${tableName}`
+  return await dBCallWithPromise
+    .get(sqlQuery)
+    .then((row) => `No Of Rows in ${tableName} Table : ${row.noOfRows} Rows`)
 }
 
-fs.writeFile("./noOfRowsPerTableForHundredMillionMessages", "")
+export function tableSizeWriter(fileName, noOfMessagesPerChannel) {
+  fs.appendFile(
+    fileName,
+    `Table for no of messages per channel ${noOfMessagesPerChannel} \n`
+  )
     .then(() => {
-        return Promise.all(tableNames.map(tableSizeFinder))
+      return Promise.all(tableNames.map(tableSizeFinder))
     })
     .then((results) => {
-        return fs.appendFile("./noOfRowsPerTable", results.join("\n"))
+      return fs.appendFile(fileName, results.join("\n"))
     })
+    .then(() => fs.appendFile(fileName, "\n \n"))
     .catch((err) => {
-        console.log(err.message)
-    });
+      console.log(err.message)
+    })
+}
